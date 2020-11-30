@@ -1,0 +1,42 @@
+import logo from './logo.svg';
+import './App.css';
+import $ from "jquery";
+import React, {Component} from "react";
+
+class App extends React.Component{
+  constructor(){
+    super();
+    this.state={
+      searchBy:"",
+      keywords:""
+    }
+  }
+  request(request){
+    console.log(request);
+    // $.ajax({
+
+    // })
+  }
+
+  render(){
+    return (
+      <div className="App">
+        <header>
+          <button>Front Page</button>
+          <form onSubmit={(e)=>{e.preventDefault(); this.request({query:this.state.keywords, tags:this.state.searchBy})}}>
+            <select value={this.state.searchBy} onChange={(e)=>{this.setState({searchBy:e.target.value})}}>
+              <option value="story">Story</option>
+              <option value="poll">Poll</option>
+
+            </select>
+            <input type="search" placeholder="search" value={this.state.keywords} onChange={(e)=>{this.setState({keywords:e.target.value})}}></input>
+            <input type="submit">Submit</input>
+          </form>
+        </header>
+      </div>
+    );
+  }
+
+}
+
+export default App;
